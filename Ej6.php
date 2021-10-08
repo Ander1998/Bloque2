@@ -1,11 +1,11 @@
 <html>
 <body>
-    <!--<form action="Ej6.php" method="post">
+    <form action="Ej6.php" method="post">
         <label for="Nombre">Introduzca un nombre:</label>
         <input type="text" id="Nombre" name="Nombre">
         <br>
-        <label for="Meses">Elige un mes:</label>
-        <select name="Meses" id="Meses">
+        <label for="meses">Elige un mes:</label>
+        <select name="meses" id="meses">
         <option value="Enero">Enero</option>
         <option value="Febrero">Febrero</option>
         <option value="Marzo">Marzo</option>
@@ -22,7 +22,7 @@
         <br>
         <input type="submit" value="Introducir datos">
     </form>
-    <p name="Lista"/>-->
+    <p name="Lista"/>
 <?php
     class Cumpleanos{
         //public $dom = new DOMDocument('1.0', 'iso-8859-1');
@@ -34,8 +34,11 @@
         public function __construct($birthdays) {
             $this->cumpleanos = array();
             if(!empty($birthdays)) {
-                for($i=0;$i<count($birthdays);$i++) {
-                    $this->cumpleanos[$i] = $birthdays[$i];    
+                /*for($i=0;$i<count($birthdays);$i++) {
+                    $this->cumpleanos[$i] = $birthdays[$i]; 
+                }*/
+                foreach ($birthdays as $name=>$mes) {
+                    $this->cumpleanos[$name] = $birthdays[$name]; 
                 }
             }
             else {
@@ -52,18 +55,27 @@
         }*/
 
         public function SacarTodo() {
-            for($i=0;$i<count($this->cumpleanos);$i++) {
-                $this->sacT += "<ul>" .$mes . ":" . "<li>" . $name . "</li></ul>";
-                echo $this->sacT;
-            }
-            /*foreach ($this->cumpleanos as $name=>$mes) {
-                $this->sacT = "<ul>" . $mes . ":" . "<li>" . $name . "</li></ul>";
+            /*for($i=0;$i<count($this->cumpleanos);$i++) {
+                $this->sacT += "<ul>" . $this->cumpleanos[$i] . ":" . "<li>" . key($this->cumpleanos[$i]) . "</li></ul>";
                 echo $this->sacT;
             }*/
+            foreach ($this->cumpleanos as $name=>$mes) {
+                $this->sacT = "<ul>" . $mes . ":" . "<li>" . $name . "</li></ul>";
+                echo $this->sacT;
+            }
+        }
+
+        public function sumarPersonas() {
+
+            foreach($this->cumpleanos as $name=>$mes) {
+                if ( $this->cumpleanos[$name] == $_POST["meses"]) {
+                    key($this->cumpleanos[$name]) += "," . key($_POST["meses"]);
+                }
+            }
         }
     }
 
-    $birthdays = ["Ander"=>"Agosto", "Unai"=>"January", "Pablo"=>"Octubre", "Oihan"=>"Agosto"];
+    $birthdays = ["Ander"=>"Agosto", "Unai"=>"Enero", "Pablo"=>"Octubre", "Oihan"=>"Agosto"];
 
     $cumpleanos = new Cumpleanos($birthdays);
     $cumpleanos->SacarTodo();
