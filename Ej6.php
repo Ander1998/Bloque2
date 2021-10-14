@@ -37,48 +37,47 @@
                 /*for($i=0;$i<count($birthdays);$i++) {
                     $this->cumpleanos[$i] = $birthdays[$i]; 
                 }*/
-                foreach ($birthdays as $name=>$mes) {
-                    $this->cumpleanos[$name] = $birthdays[$name]; 
+                foreach ($birthdays as $mes=>$name) {
+                    $this->cumpleanos[$mes] = $name; 
                 }
             }
-            else {
+            /*else {
                 $this->meses = $_POST["meses"] . ":";
-            }
-        }
-        /*public function anadirMeses($name,$mes){
-                $this->Meses[$name] += $mes;
-            
+            }*/
         }
 
-        public function printMonths(){
-            foreach ($)
-        }*/
+        public function anadirMeses($mes,$name){   
+                $this->cumpleanos[$mes] .= $name . nl2br("\n");         
+        }
 
         public function SacarTodo() {
             /*for($i=0;$i<count($this->cumpleanos);$i++) {
                 $this->sacT += "<ul>" . $this->cumpleanos[$i] . ":" . "<li>" . key($this->cumpleanos[$i]) . "</li></ul>";
                 echo $this->sacT;
             }*/
-            foreach ($this->cumpleanos as $name=>$mes) {
+            foreach ($this->cumpleanos as $mes=>$name) {
                 $this->sacT = "<ul>" . $mes . ":" . "<li>" . $name . "</li></ul>";
                 echo $this->sacT;
             }
         }
 
-        public function sumarPersonas() {
+        /*public function sumarPersonas() {
 
-            foreach($this->cumpleanos as $name=>$mes) {
-                if ( $this->cumpleanos[$name] == $_POST["meses"]) {
-                    key($this->cumpleanos[$name]) += "," . key($_POST["meses"]);
+            foreach($this->cumpleanos as $mes=>$name) {
+                if ( $this->cumpleanos[$mes] == $_POST["meses"]) {
+                    ($this->cumpleanos[$mes]) += "," . key($_POST["meses"]);
                 }
             }
-        }
+        }*/
     }
 
-    $birthdays = ["Ander"=>"Agosto", "Unai"=>"Enero", "Pablo"=>"Octubre", "Oihan"=>"Agosto"];
+    $birthdays = ["Enero"=>"Unai", "Febrero"=>"", "Marzo"=>"", "Abril"=>"", "Mayo"=>"", "Junio"=>"", "Julio"=>"",  "Agosto"=>"Oihan", "Septiembre"=>"", "Octubre"=>"Pablo", "Noviembre"=>"", "Diciembre"=>""];
 
     $cumpleanos = new Cumpleanos($birthdays);
+    $cumpleanos->anadirMeses("Enero","Pacolo");
+    $cumpleanos->anadirMeses("Agosto","Tomas");
     $cumpleanos->SacarTodo();
+    
 ?>
 </body>
 </html>
