@@ -44,10 +44,10 @@
             }
 
 }
-    $p1 = new Persona("73037255L", "Sergio", "Haüsler");
+    $p1 = new Persona("32516881S", "Ramos", "Ander");
     echo $p1->unirPalabra();
 
-    $p2 = new Persona("73037255L", "Pablo", "Igaitea");
+    $p2 = new Persona("73031633D", "Ander", "Ramos");
     echo $p2->unirPalabra();
     
     class User extends Persona{
@@ -78,11 +78,11 @@
                 }
             }
     }
-    $c1 = new User("73037255L", "Pablo", "Igaitea", 120);
+    $c1 = new User("73031633D", "Ander", "Ramos", 120);
     echo $c1->unirPalabra();
     echo $c1->visualizarPuntos();
 
-    $c2 = new User("73037255L", "Sergio", "Haüsler", 80);
+    $c2 = new User("32516881S", "Ramos", "Ander", 80);
     echo $c2->unirPalabra();
     echo $c2->visualizarPuntos();
     ?>

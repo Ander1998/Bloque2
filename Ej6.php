@@ -37,8 +37,10 @@
                 /*for($i=0;$i<count($birthdays);$i++) {
                     $this->cumpleanos[$i] = $birthdays[$i]; 
                 }*/
-                foreach ($birthdays as $mes=>$name) {
-                    $this->cumpleanos[$mes] = $name; 
+                foreach ($birthdays as $mes=>$nombresarray) {
+                    $nombresarray = array();
+                    $nombresarray[]  =  $name;
+                    $this->cumpleanos[$mes] = $nombresarray . nl2br("\n"); 
                 }
             }
             /*else {
@@ -76,6 +78,7 @@
     $cumpleanos = new Cumpleanos($birthdays);
     $cumpleanos->anadirMeses("Enero","Pacolo");
     $cumpleanos->anadirMeses("Agosto","Tomas");
+    $cumpleanos->anadirMeses(key($_POST["meses"]),$_POST["meses"]);
     $cumpleanos->SacarTodo();
     
 ?>
