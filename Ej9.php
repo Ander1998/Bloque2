@@ -16,26 +16,28 @@
         public function calcularArea(){
             for($i = 0; $i < count($this->lados); $i++){
                 $res = 0;
-            try{
-                if($this->lados[$i] < 0){
+                if ($this->lados[$i] > 0) {
+                    $res = pow($this->lados[$i], 4);
+                    echo "El resultado es " . $res . nl2br("\n");
+                } else if($this->lados[$i] < 0){
                     throw new Exception("!Es un número negativo¡" . nl2br("\n"));
                 } else if($this->lados[$i] == 0) {
-                    throw new Exception("0 no es ni un número negativo ni positivo" . nl2br("\n"));;
-                }
+                    throw new Exception("0 no es ni un número negativo ni positivo" . nl2br("\n"));
                 $res = pow($this->lados[$i], 4);
                 echo $res . nl2br("\n");
-            }catch (Exception $e){
-                echo "Excepcion capturada: ", $e->getMessage(), "\n";
+                }
             }
-            }
-            
         }
     }
-    $p1 = new Ejercicio9();
-    $p1->rellenarRandom();
-    $p1->calcularArea();
 
-
+    try{
+        $p1 = new Ejercicio9();
+        $p1->rellenarRandom();
+        $p1->calcularArea();
+        }
+    catch (Exception $e) {
+        echo "Excepcion capturada: ", $e->getMessage(), "\n";
+    }
 ?>
 </body>
 </html>

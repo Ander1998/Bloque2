@@ -1,28 +1,34 @@
 <html>
 
-<body>
-<?php
-class Ejercicio8{
-    public $path;
+    <body>
+        <?php
+        class Ejercicio8{
+            public $path;
 
-    public function __construct($path){
-        $this->path = $path;
-    }
-
-    public function config(){
-        try {
-          if (!file_exists($this->path)){
-              throw new Exception("Configuration file not found.");
+            public function __construct($path){
+                $this->path = $path;
             }
-            echo "The file exists";
-        } catch (Exception $e) {
-            echo $e->getMessage();
-            die();
+
+            public function config(){
+                if (!file_exists($this->path)){
+                    throw new Exception("Configuration file not found.");
+                    }
+                    return true;
+            }
         }
-    }
-}
-$p1 = new Ejercicio8("config.php");
-$p1-> config();
-?>
-</body>
+
+
+        try {
+            $p1 = new Ejercicio8("Ej9.php");
+            if ($p1-> config()){
+                echo " file exists";
+            }
+        } catch (Exception $e) {
+            echo 'Excepcion capturada: ' . $e->getMessage(), "\n";
+        }
+
+                
+
+        ?>
+    </body>
 </html>
